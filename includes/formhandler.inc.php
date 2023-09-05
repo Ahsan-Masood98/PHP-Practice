@@ -12,37 +12,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location:../index.php");
         die();
     } else {
-        try {
-            // to copy paste a php script in that file here 
-            require_once "dbh.inc.php";
-            // we should not insert our data into our query directly otherwise 
-            // $query = "INSERT INTO users (username, pwd, email) VALUES ($username, $pwd, $email);";
+        /* // usage with PDO not with mysqli
+         try {
+        */
 
-            $query = "INSERT INTO users (username, pwd, email) VALUES (?, ?, ?);";
+        // to copy paste a php script in that file here 
+        require_once "dbh.inc.php";
+        // we should not insert our data into our query directly otherwise 
+        // $query = "INSERT INTO users (username, pwd, email) VALUES ($username, $pwd, $email);";
 
-            /* // usage with PDO not with mysqli
-            $stmt = $pdo->prepare($query);
-            $stmt->execute([$username, $pwd, $email]);
-             $pdo = null;
-             $stmt = null;
-            */
+        $query = "INSERT INTO users (username, pwd, email) VALUES (?, ?, ?);";
 
-            /*
-            Using Prepared Statement:
-            prepared sends query to the database first then we bind data 
-            submited by the user and send it to database afterwards
-            */
-            $stmt = $conn->prepare($query);
-            $stmt->bind_param("sss", $username, $pwd, $email);
-            $stmt->execute();
-            $stmt->close();
-            $conn->close();
+        /* // usage with PDO not with mysqli
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$username, $pwd, $email]);
+        $pdo = null;
+        $stmt = null;
+        */
 
-            header("Location:../index.php");
-            die();
+        /*
+        Using Prepared Statement:
+        prepared sends query to the database first then we bind data 
+        submited by the user and send it to database afterwards
+        */
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("sss", $username, $pwd, $email);
+        $stmt->execute();
+        $stmt->close();
+        $conn->close();
+
+        header("Location:../index.php");
+        die();
+        /*// usage with PDO not with mysqli
         } catch (PDOException $e) {
             die("query faild: " . $e->getMessage());
         }
+        */
     }
 } else {
     header("Location:../index.php");
