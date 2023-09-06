@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stmt->affected_rows > 0) {
             $stmt->close();
             $conn->close();
-            // header("Location: ../index.php");
+            header("Location: ../index.php");
             die("Record deleted sucsessfully.");
         } else {
             die("No records were Deleted.");
