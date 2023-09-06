@@ -11,6 +11,13 @@
 
 <body>
 
+    <form class="search" action="search.php" method="post">
+        <label for="usersearch">Search for user: </label>
+        <input type="text" id="usersearch" name="usersearch" placeholder="Search..." />
+        <button>Search</button>
+    </form>
+
+
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <input type="number" name="num01" placeholder="Number one">
         <select name="operator" id="">
@@ -226,6 +233,7 @@
         }
     }
     ?>
+
 
     <h3>Sign Up</h3>
     <form action="includes/formhandler.inc.php" method="post">
