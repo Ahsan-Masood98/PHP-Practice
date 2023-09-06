@@ -25,8 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo $lastname;
     echo "<br>";
     echo $favouritepet;
-    // this is to navigate the user to privious page 
-    header("location: ../index.php");
 } else {
     header("location: ../index.php");
 }
