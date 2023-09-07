@@ -17,13 +17,13 @@ function check_signup_errors()
 
 function signup_input()
 {
-    if (isset($_SESSION["signup_data"]['username']) && !isset($_SESSION["errors_signup"]['username_taken'])) {
+    if (isset($_SESSION["signup_data"]['username']) && !isset($_SESSION["errors_signup"]['username_taken']) && !isset($_GET['signup'])) {
         echo '<input type="text" name="username" placeholder="Username" value="' . $_SESSION["signup_data"]['username'] . '">';
     } else {
         echo '<input type="text" name="username" placeholder="Username">';
     }
     echo '  <input type="password" name="pwd" placeholder="Password">';
-    if (isset($_SESSION["signup_data"]['email']) && !isset($_SESSION["errors_signup"]['email_used']) && !isset($_SESSION["errors_signup"]['invalid_email'])) {
+    if (isset($_SESSION["signup_data"]['email']) && !isset($_SESSION["errors_signup"]['email_used']) && !isset($_SESSION["errors_signup"]['invalid_email'])  && !isset($_GET['signup'])) {
         echo '<input type="text" name="email" placeholder="Email" value="' . $_SESSION["signup_data"]['email'] . '">';
     } else {
         echo '<input type="text" name="email" placeholder="Email">';
