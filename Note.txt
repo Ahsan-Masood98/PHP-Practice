@@ -1,2 +1,0 @@
-This is a repository contains diffrent branches
-containing different concepts of PHP
